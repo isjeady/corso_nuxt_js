@@ -10,6 +10,7 @@
         <li><a href=""></a></li>
         <li><a href=""></a></li>
       </ul>
+      <button @click="goToUser">GoTo User {{ id }}</button>
       <hr>
       Normal Link
       <ul>
@@ -29,7 +30,18 @@ import Logo from '~/components/Logo.vue'
 export default {
   components: {
     Logo
+  },
+  data(){
+    return {
+      id : 6
+    }
+  },
+  methods :{
+    goToUser(){
+      this.$router.push('/users/' + this.id);
+    }
   }
+
 }
 </script>
 
