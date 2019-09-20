@@ -1,35 +1,24 @@
 <template>
   <div class="container">
     <div>
+      <logo />
+      <hr>
+      Nuxt Link
+      <ul>
+        <li><nuxt-link to="/users">Nuxt Link - Utenti</nuxt-link></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+      </ul>
+      <hr>
+      Normal Link
       <ul>
         <li><a href="/users">Utenti</a></li>
         <li><a href=""></a></li>
         <li><a href=""></a></li>
         <li><a href=""></a></li>
       </ul>
-      <logo />
-      <h1 class="title">
-        corso_nuxt_js
-      </h1>
-      <h2 class="subtitle">
-        My shining Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+       <hr>
     </div>
   </div>
 </template>
