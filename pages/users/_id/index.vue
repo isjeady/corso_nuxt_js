@@ -11,7 +11,8 @@ export default {
   validate(data){
     console.log(data.params);
     return /^\d+$/.test(data.params.id);
-  }
+  },
+  layout : 'users'
 }
 
 </script>
