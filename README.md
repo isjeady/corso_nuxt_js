@@ -1,0 +1,1 @@
+corso_nuxt_js
