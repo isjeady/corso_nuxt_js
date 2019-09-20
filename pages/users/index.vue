@@ -1,5 +1,10 @@
 <template>
   <div>
-    <h1>Utenti Page</h1>
+    <h1>Tutti gli Utenti</h1>
+    <template v-for="n in 10" >
+       <a :href="`/users/${n}`" :key="`__${n}`">Utente {{ n }}</a><br>
+    </template>
   </div>
 </template>
+
+

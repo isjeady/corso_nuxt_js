@@ -1,26 +1,8 @@
 <template>
   <div class="container">
-    <div>
-      <logo />
-      <hr>
-      Nuxt Link
-      <ul>
-        <li><nuxt-link to="/users">Nuxt Link - Utenti</nuxt-link></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-      </ul>
-      <button @click="goToUser">GoTo User {{ id }}</button>
-      <hr>
-      Normal Link
-      <ul>
-        <li><a href="/users">Utenti</a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-        <li><a href=""></a></li>
-      </ul>
-       <hr>
-    </div>
+    <h2>INDEX</h2>
+    <hr>
+    <a href="/users">Utenti</a>
   </div>
 </template>
 
