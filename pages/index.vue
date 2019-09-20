@@ -1,6 +1,12 @@
 <template>
   <div class="container">
     <div>
+      <ul>
+        <li><a href="/users">Utenti</a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+      </ul>
       <logo />
       <h1 class="title">
         corso_nuxt_js
