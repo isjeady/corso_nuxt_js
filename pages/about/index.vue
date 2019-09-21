@@ -1,7 +1,7 @@
 <template>
   <div>
-    <p class="text-5xl">About</p>
-    <p class="text-2xl">
+    <p class="text-white font-extrabold text-3xl md:text-5xl">About</p>
+    <p class="text-2xl pt-20">
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim, tempora itaque, vitae, ducimus recusandae
       iusto laborum inventore voluptates possimus ad explicabo earum corporis velit id cupiditate aliquam sequi
       molestias temporibus!
