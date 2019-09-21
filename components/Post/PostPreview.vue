@@ -2,7 +2,7 @@
   <div>
     <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg">
 							<a :href="`/posts/${id}`" class="flex flex-wrap no-underline hover:no-underline">
-								<img :src="thumbnail" class="h-64 w-full rounded-t pb-6">
+								<img :src="thumbnail" :class="`${thumbnailFormat(tail)} w-full rounded-t pb-6`">
 								<p class="w-full text-gray-600 text-xs md:text-sm px-6">GETTING STARTED</p>
 								<div class="w-full font-bold text-xl text-gray-900 px-6">{{ title }}</div>
 								<p class="text-gray-800 font-serif text-base px-6 mb-5">
@@ -25,7 +25,11 @@ export default {
   name: 'PostPreview',
   data(){
     return {
-
+    }
+  },
+  methods : {
+    thumbnailFormat(tail){
+      return tail == '1/3' ? 'h-64' : 'h-full';
     }
   },
   props: {
@@ -50,6 +54,10 @@ export default {
       required: true
     },
     timeToRead: {
+      type : String,
+      required: true
+    },
+    tail: {
       type : String,
       required: true
     },
