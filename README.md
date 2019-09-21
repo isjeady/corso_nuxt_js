@@ -1,6 +1,6 @@
 # corso_nuxt_js
 
-> My shining Nuxt.js project
+> My brilliant Nuxt.js project
 
 ## Build Setup
 
