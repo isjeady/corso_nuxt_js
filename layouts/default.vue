@@ -1,11 +1,7 @@
 <template>
   <div>
-    <div class="headbar">
-      MENU / SIDEBAR
-      <a href="/">HOME</a> |
-      <a href="/posts">POSTS/BLOG</a> |
-      <a href="/about">ABOUT</a> |
-    </div>
+    <Header @sidenavToggle="sidenav = !sidenav" />
+    <Sidenav :show="sidenav" @close="sidenav = false" />
     <div class="w-full m-0 p-0 bg-cover bg-bottom header-site" >
 			<div class="container max-w-4xl mx-auto pt-16 md:pt-32 text-center break-normal">
 			</div>
@@ -15,6 +11,25 @@
     </div>
   </div>
 </template>
+
+
+<script>
+import Sidenav  from '~/components/Navigator/Sidenav.vue'
+import Header  from '~/components/Navigator/Header.vue'
+
+export default {
+  components: {
+    Sidenav,
+    Header
+  },
+  data(){
+    return {
+      sidenav : false
+    }
+  }
+}
+</script>
+
 
 <style>
 html {
@@ -35,15 +50,4 @@ html {
   max-height:360px;
 }
 
-.headbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    margin-bottom: 10px;
-    text-align: center;
-    padding: 20px;
-    border-bottom: 1px solid #000;
-    font-size: 18px;
-    background-color: #a2f5cb;
-}
 </style>
