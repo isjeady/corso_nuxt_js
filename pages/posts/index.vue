@@ -7,7 +7,6 @@
          <a href="/posts/3">POST 3</a>
 </h5>
 
-<div class="container px-4 md:px-0 max-w-6xl mx-auto -mt-32">
 
     <div class="flex flex-wrap justify-between pt-12 -mx-6">
 
@@ -145,7 +144,6 @@
 					</div>
 
 				</div>
-</div>
 
 
 
