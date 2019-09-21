@@ -6,7 +6,11 @@
       <a href="/posts">POSTS/BLOG</a> |
       <a href="/about">ABOUT</a> |
     </div>
-    <div class="container px-4 md:px-0 max-w-6xl mx-auto mt-32">
+    <div class="w-full m-0 p-0 bg-cover bg-bottom header-site" >
+			<div class="container max-w-4xl mx-auto pt-16 md:pt-32 text-center break-normal">
+			</div>
+		</div>
+    <div class="container px-4 md:px-0 max-w-6xl mx-auto -mt-32">
       <nuxt />
     </div>
   </div>
@@ -25,6 +29,11 @@ html {
   box-sizing: border-box;
 }
 
+.header-site{
+  background-image:url('~assets/bg/rear.jpeg');
+  height: 60vh;
+  max-height:360px;
+}
 
 .headbar {
     position: fixed;

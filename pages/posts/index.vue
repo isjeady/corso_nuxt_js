@@ -1,6 +1,6 @@
 <template>
 <div>
-    <p class="text-5xl">Posts</p>
+    <p class="text-white font-extrabold text-3xl md:text-5xl">Posts</p>
     <div class="flex flex-wrap justify-between pt-12 -mx-6">
 			<div v-for="(post,index) in posts" :class="`w-full md:w-${post.tail} p-6 flex flex-col flex-grow flex-shrink`" :key="`_post_${index}`">
 						<PostPreview
