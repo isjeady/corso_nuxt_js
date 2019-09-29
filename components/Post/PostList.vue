@@ -11,6 +11,9 @@
               :timeToRead="post.timeToRead"
               :tail="post.tail"
             ></PostPreview>
+            <button v-if="isAdmin" @click="linkToEdit(post.id)" class="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50">
+               Edit
+            </button>
 		  </div>
 	</div>
 </div>
@@ -55,12 +58,18 @@ export default {
     }
   },
   methods : {
-
+    linkToEdit(id){
+      this.$router.push('/admin/post/' + id);
+    }
   },
   props: {
     type: {
       type : String,
       required: true
+    },
+    isAdmin: {
+      type : Boolean,
+      default: false
     }
   }
 }

@@ -1,6 +1,5 @@
 <template>
     <div>
-        <p class="text-black font-extrabold text-3xl md:text-5xl">New Post</p>
         <div class="bg-white shadow-md rounded px-8 pt-20 pb-8 mb-4">
              <form class="w-64 inline-block">
                 <div class="mb-4">
@@ -60,9 +59,6 @@
             </form>
         </div>
            <pre><code>{{ newPost }}</code></pre>
-            <p class="text-center text-gray-500 text-xs">
-                &copy;2019 Acme Corp. All rights reserved.
-            </p>
     </div>
 </template>
 
@@ -73,9 +69,16 @@ export default {
   components: {
     
   },
+  props : {
+      post : {
+          type : Object,
+          required : false
+      }
+  },
   data(){
     return {
-        newPost : {
+        newPost : this.post ? { ...this.post } : 
+        {
             id : '',
             title : '',
             description : '',

@@ -6,7 +6,7 @@
     </button>
     <div class="pt-20">
         <p class="text-3xl">PostList</p>
-        <PostList type="all" />
+        <PostList type="all" isAdmin />
     </div>
   </div>
 </template>
@@ -27,8 +27,9 @@ export default {
   },
   methods : {
     newPostPage(){
-      this.$router.push('/admin/new-post');
+      this.$router.push('/admin/post/new');
     }
-  }
+  },
+  layout : 'admin'
 }
 </script>
