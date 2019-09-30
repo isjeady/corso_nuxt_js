@@ -34,7 +34,6 @@ export default {
   asyncData(context){
 	  console.log('asyncData');
 	  return new Promise((resolve,reject) => {
-		/*
 		setTimeout(() => {
 		  resolve({
 			  currentPost : {
@@ -48,8 +47,7 @@ export default {
 			  }
 		  })
 	  	});
-		  */
-		reject(new Error());  
+		//reject(new Error());  
 	  })
 	  .then(data => {
 		  return data;
