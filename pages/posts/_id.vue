@@ -34,7 +34,7 @@ export default {
   asyncData(context,callback){
 	  console.log('asyncData');
 	  setTimeout(() => {
-		  callback(null, {
+		  callback(new Error(), {
 			  currentPost : {
 				   tail : '1/2', 
 				   id : context.route.params.id, 
