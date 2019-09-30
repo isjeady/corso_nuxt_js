@@ -31,10 +31,11 @@
 import PostList from '~/components/Post/PostList.vue'
 
 export default {
-  asyncData(context,callback){
+  asyncData(context){
 	  console.log('asyncData');
-	  setTimeout(() => {
-		  callback(new Error(), {
+	  return new Promise((resolve,reject) => {
+		setTimeout(() => {
+		  resolve({
 			  currentPost : {
 				   tail : '1/2', 
 				   id : context.route.params.id, 
@@ -45,7 +46,15 @@ export default {
 				   timeToRead : '1 MIN READ'
 			  }
 		  })
+	  	});
+	  })
+	  .then(data => {
+		  return data;
+	  })
+	  .catch(error => {
+		  context.error(e);
 	  });
+	
   }
 }
 </script>
