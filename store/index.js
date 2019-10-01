@@ -1,4 +1,5 @@
 import Vuex from 'vuex';
+import axios from 'axios'
 
 const createStore = () => {
   return new Vuex.Store({
@@ -17,24 +18,13 @@ const createStore = () => {
     actions: {
       nuxtServerInit(vueContext,context){
         console.log("nuxtServerInit");
-        if(!process.client){
-          console.log(context.req);
-        }
-        return new Promise((resolve,reject) => {
-          setTimeout(() => {
-            vueContext.commit('setPost', {
-                  pst : {
-                    tail : '1/2',
-                    id : 3,
-                    title : 'Lorem ipsum dolor sit amet.',
-                    description : 'Lorem ipsum eu nunc commodo posuere et sit amet ligula.' ,
-                    thumbnail : 'https://source.unsplash.com/collection/764827/800x600',
-                    userImg : 'http://i.pravatar.cc/300',
-                    timeToRead : '1 MIN READ'
-                  }
-                });
-                resolve();
-              },2000);
+        
+        return axios.get('https://nuxt-corso-isjeady.firebaseio.com/posts.json')
+          .then(res => {
+            console.log(res.data);
+          })
+          .catch(error => {
+            console.log(error);
           });
       },
       setPosts(context,posts){
