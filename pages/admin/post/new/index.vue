@@ -19,14 +19,7 @@ export default {
   },
   data(){
     return {
-        newPost : {
-            tail : '1/3', 
-            title : 'Lorem ipsum dolor sit amet.',
-            description : 'Lorem ipsum eu nunc commodo posuere et sit amet ligula.' ,
-            thumbnail : 'https://source.unsplash.com/collection/225/800x600', 
-            userImg : 'http://i.pravatar.cc/300', 
-            timeToRead : '1 MIN READ'
-        }
+      
     }
   },
   methods : {

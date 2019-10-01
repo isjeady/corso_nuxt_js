@@ -4,16 +4,12 @@ import axios from 'axios'
 const createStore = () => {
   return new Vuex.Store({
     state: {
-      posts :  [],
-      post : {}
+      posts :  []
     },
     mutations: {
       setPosts(state,posts){
         state.posts = posts;
       },
-      setPost(state,post){
-        state.post = post;
-      }
     },
     actions: {
       nuxtServerInit(vueContext,context){
@@ -40,9 +36,6 @@ const createStore = () => {
       getPosts(state){
         return state.posts;
       },
-      getPost(state){
-        return state.post;
-      }
     }
   })
 }

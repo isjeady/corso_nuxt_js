@@ -29,10 +29,20 @@
 
 <script>
 import PostList from '~/components/Post/PostList.vue'
+import axios from 'axios'
 
 export default {
-  fetch(context){
-	  console.log('asyncData');
+  asyncData(context){
+	console.log('asyncData');
+	return axios.get(`https://nuxt-corso-isjeady.firebaseio.com/posts/${context.params.id}.json`)
+          .then(res => {
+			  return {
+					currentPost : res.data
+			  }
+          })
+          .catch(error => {
+            console.log(error);
+          });
   },
   computed: {
     currentPost(){
