@@ -11,5 +11,23 @@
       Dolore harum architecto veritatis, soluta quod nemo molestiae cum impedit. Minima, nisi enim libero aperiam aspernatur perferendis assumenda sapiente repellat! Eum incidunt libero, earum sint corrupti doloribus nihil est qui.
       Optio illo nisi at placeat, magni eos voluptatem nulla! Distinctio repudiandae ad officiis soluta totam molestias tempore natus nesciunt. Amet rem voluptate labore libero aspernatur nemo expedita delectus pariatur ipsum.
     </p>
+    <code>{{  postAbout }}</code>
   </div>
 </template>
+
+
+<script>
+export default {
+  components: {
+
+  },
+  data(){
+    return {
+      postAbout : []
+    }
+  },
+  mounted(){
+    this.postAbout = this.$store.getters.getPosts;
+  }
+}
+</script>

@@ -56,6 +56,7 @@ export default {
     }else if(this.type == 'last'){
       this.posts = this.lastPosts;
     }
+    this.$store.dispatch('setPosts',this.posts);
   },
   methods : {
     linkToEdit(id){
