@@ -21,6 +21,11 @@ const createStore = () => {
         
         return axios.get('https://nuxt-corso-isjeady.firebaseio.com/posts.json')
           .then(res => {
+            const postsArray = [];
+            for (const key in res.data){
+              postsArray.push({...res.data[key], id: key})
+            }
+            vueContext.commit('setPosts',postsArray);
             console.log(res.data);
           })
           .catch(error => {
