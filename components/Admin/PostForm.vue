@@ -80,7 +80,7 @@ export default {
         newPost : this.post ? { ...this.post } :
         {
             tail : '1/3', 
-            title : 'Lorem ipsum dolor sit amet.',
+            title : 'New Lorem ipsum dolor sit amet.',
             description : 'Lorem ipsum eu nunc commodo posuere et sit amet ligula.' ,
             thumbnail : 'https://source.unsplash.com/collection/225/800x600', 
             userImg : 'http://i.pravatar.cc/300', 
@@ -90,7 +90,7 @@ export default {
   },
   methods : {
     save(){
-      console.log(this.newPost);
+      //console.log(this.newPost);
       this.$emit('save',{ ...this.newPost,updatedDate : new Date()});
     },
     cancel(){

@@ -1,7 +1,9 @@
 <template>
     <div>
         <p class="text-black font-extrabold text-3xl md:text-5xl">New Post</p>
-            <PostForm :post="newPost" @save="save" />
+            <div class="text-2xl" v-if="loading">Caricamento in corso...</div>
+            <div class="text-2xl" v-if="saved">Salvato Correttamente...</div>
+            <PostForm v-if="!loading" @save="save" />
             <p class="text-center text-gray-500 text-xs">
                 &copy;2019 Acme Corp. All rights reserved.
             </p>
@@ -19,15 +21,24 @@ export default {
   },
   data(){
     return {
-      
+      loading : false,
+      saved : false
     }
   },
   methods : {
     save(newPost){
+      this.loading = true
       //console.log(this.newPost)
       axios.post('https://nuxt-corso-isjeady.firebaseio.com/posts.json',newPost)
-      .then(result => console.log(result))
-      .catch( error => console.log(error));
+      .then(result => {
+        this.loading = false;
+        this.saved = true;
+        console.log(result)
+      })
+      .catch( error => {
+        this.loading = false;
+        console.log(error);
+      });
     },
     cancel(){
       this.$router.push('/admin');
