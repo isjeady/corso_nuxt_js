@@ -10,7 +10,7 @@
 
 		<p class="text-sm md:text-base text-teal-500 font-bold">08 APRIL 2019 <span class="text-gray-900">/</span> GETTING STARTED</p>
 
-				
+
 	{{ currentPost }}
 				<p class="py-6 text-left">
 					{{ currentPost.description }}
@@ -31,31 +31,36 @@
 import PostList from '~/components/Post/PostList.vue'
 
 export default {
-  asyncData(context){
+  fetch(context){
 	  console.log('asyncData');
 	  return new Promise((resolve,reject) => {
 		setTimeout(() => {
 		  resolve({
-			  currentPost : {
-				   tail : '1/2', 
-				   id : context.route.params.id, 
+			  pst : {
+				   tail : '1/2',
+				   id : context.route.params.id,
 				   title : 'Lorem ipsum dolor sit amet.',
 				   description : 'Lorem ipsum eu nunc commodo posuere et sit amet ligula.' ,
-				   thumbnail : 'https://source.unsplash.com/collection/764827/800x600', 
-				   userImg : 'http://i.pravatar.cc/300', 
+				   thumbnail : 'https://source.unsplash.com/collection/764827/800x600',
+				   userImg : 'http://i.pravatar.cc/300',
 				   timeToRead : '1 MIN READ'
 			  }
 		  })
 	  	});
-		//reject(new Error());  
+		//reject(new Error());
 	  })
 	  .then(data => {
-		  return data;
+      context.store.commit('setPost',data.pst);
 	  })
 	  .catch(e => {
 		  context.error(e);
 	  });
-	
+
+  },
+  computed: {
+    currentPost(){
+      return this.$store.getters.getPost;
+    }
   }
 }
 </script>

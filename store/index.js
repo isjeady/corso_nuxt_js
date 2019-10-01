@@ -3,11 +3,15 @@ import Vuex from 'vuex';
 const createStore = () => {
   return new Vuex.Store({
     state: {
-      posts :  []
+      posts :  [],
+      post : {}
     },
     mutations: {
       setPosts(state,posts){
         state.posts = posts;
+      },
+      setPost(state,post){
+        state.post = post;
       }
     },
     actions: {
@@ -18,6 +22,9 @@ const createStore = () => {
     getters : {
       getPosts(state){
         return state.posts;
+      },
+      getPost(state){
+        return state.post;
       }
     }
   })
