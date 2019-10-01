@@ -15,10 +15,14 @@ const createStore = () => {
       }
     },
     actions: {
-      nuxtServerInit(context){
+      nuxtServerInit(vueContext,context){
+        console.log("nuxtServerInit");
+        if(!process.client){
+          console.log(context.req);
+        }
         return new Promise((resolve,reject) => {
           setTimeout(() => {
-                context.commit('setPost', {
+            vueContext.commit('setPost', {
                   pst : {
                     tail : '1/2',
                     id : 3,
@@ -34,7 +38,7 @@ const createStore = () => {
           });
       },
       setPosts(context,posts){
-        context.commit('setPosts',posts);
+        vueContext.commit('setPosts',posts);
       }
     },
     getters : {
