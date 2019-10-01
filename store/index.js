@@ -38,7 +38,7 @@ const createStore = () => {
           });
       },
       setPosts(context,posts){
-        vueContext.commit('setPosts',posts);
+        context.commit('setPosts',posts);
       }
     },
     getters : {
