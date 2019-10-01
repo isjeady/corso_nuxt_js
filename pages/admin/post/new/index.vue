@@ -28,17 +28,14 @@ export default {
   methods : {
     save(newPost){
       this.loading = true
-      //console.log(this.newPost)
-      axios.post('https://nuxt-corso-isjeady.firebaseio.com/posts.json',newPost)
-      .then(result => {
-        this.loading = false;
-        this.saved = true;
-        console.log(result)
-      })
-      .catch( error => {
-        this.loading = false;
-        console.log(error);
-      });
+      this.$store.dispatch('addPost',newPost).then(
+        result => {
+            this.loading = false;
+            this.saved = true;
+        })
+        .catch( error => {
+            this.loading = false;
+        });
     },
     cancel(){
       this.$router.push('/admin');

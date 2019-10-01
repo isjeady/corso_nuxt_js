@@ -10,6 +10,13 @@ const createStore = () => {
       setPosts(state,posts){
         state.posts = posts;
       },
+      newPost(state,newPost){
+        state.posts.push(newPost);
+      },
+      editPost(state,editPost){
+        const index = state.posts.findIndex(post => post.id == editPost.id);
+        state.posts[index] = editPost;
+      }
     },
     actions: {
       nuxtServerInit(vueContext,context){
@@ -28,6 +35,26 @@ const createStore = () => {
             console.log(error);
           });
       },
+      addPost(context,newPost){
+        return axios.post('https://nuxt-corso-isjeady.firebaseio.com/posts.json',newPost)
+          .then(result => {
+            console.log(result.data.name);
+            context.commit('newPost',{ ...newPost, id : result.data.name });
+          })
+          .catch( error => {
+            console.log(error);
+          });
+      },
+      editPost(context,editPost){
+        return axios.put(`https://nuxt-corso-isjeady.firebaseio.com/posts/${editPost.id}.json`,editPost)
+          .then(result => {
+            console.log(result.data.name);
+            context.commit('editPost',editPost);
+          })
+          .catch( error => {
+            console.log(error);
+          });
+      },
       setPosts(context,posts){
         context.commit('setPosts',posts);
       }
@@ -36,6 +63,10 @@ const createStore = () => {
       getPosts(state){
         return state.posts;
       },
+      getPost : (state) => (postId) =>{
+        const p = state.posts.find(post => post.id == postId);
+        return p ? p : null;
+      }
     }
   })
 }

@@ -19,8 +19,10 @@ export default {
   components: {
     PostForm
   },
+  /*
   asyncData(context){
   console.log('asyncData');
+
 	  return axios.get(`https://nuxt-corso-isjeady.firebaseio.com/posts/${context.params.postId}.json`)
         .then(res => {
           return {
@@ -31,25 +33,33 @@ export default {
           console.log(error);
         });
   },
-  data(){
-    return {
+  */
+ data(){
+   return {
+        editViewPost : {},
         loading : false,
         saved : false
     }
   },
+  created(){
+    const p = this.$store.getters.getPost(this.$route.params.postId);
+    this.editViewPost = p;
+  },
+  updated(){
+    const p = this.$store.getters.getPost(this.$route.params.postId);
+    this.editViewPost = p;
+  },
   methods : {
     edit(editPost){
       this.loading = true
-      console.log(editPost);
-       axios.put(`https://nuxt-corso-isjeady.firebaseio.com/posts/${this.$route.params.postId}.json`,editPost)
+      this.$store.dispatch('editPost',editPost)
       .then(result => {
+        console.log
         this.loading = false;
         this.saved = true;
-        console.log(result)
       })
       .catch( error => {
         this.loading = false;
-        console.log(error);
       });
     },
     cancel(){
