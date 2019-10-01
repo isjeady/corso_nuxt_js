@@ -15,6 +15,24 @@ const createStore = () => {
       }
     },
     actions: {
+      nuxtServerInit(context){
+        return new Promise((resolve,reject) => {
+          setTimeout(() => {
+                context.commit('setPost', {
+                  pst : {
+                    tail : '1/2',
+                    id : 3,
+                    title : 'Lorem ipsum dolor sit amet.',
+                    description : 'Lorem ipsum eu nunc commodo posuere et sit amet ligula.' ,
+                    thumbnail : 'https://source.unsplash.com/collection/764827/800x600',
+                    userImg : 'http://i.pravatar.cc/300',
+                    timeToRead : '1 MIN READ'
+                  }
+                });
+                resolve();
+              },2000);
+          });
+      },
       setPosts(context,posts){
         context.commit('setPosts',posts);
       }
