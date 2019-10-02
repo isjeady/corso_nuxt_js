@@ -56,19 +56,28 @@ export default {
           this.isLogin = !this.isLogin;
       },
       invia(){
+        var urlServer = process.env.firebaseUrlAuth;
+        if(this.isLogin){
+            urlServer = urlServer + '/accounts:signInWithPassword?key=' + process.env.apiKey,body;
+        }else{
+            urlServer = urlServer + '/accounts:signUp?key=' + process.env.apiKey,body;
+        }
+        
         console.log(this.user);
         const body = {
-              email : this.user.email,
-              password : this.user.password,
-              returnSecureToken : true
+                  email : this.user.email,
+                  password : this.user.password,
+                  returnSecureToken : true
         }
-        axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + process.env.apiKey,body)
+        
+        axios.post(urlServer,body)
         .then(result => {
-                console.log(result);
+            console.log(result.data.idToken);
         })
         .catch( error => {
-                console.log(error);
+            console.log(error.errors);
         });
+        
       }
   }
 }

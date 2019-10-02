@@ -53,7 +53,8 @@ export default {
     }
   },
   env : {
-    apiKey: "AIzaSyCv72WatXjsM_AKL3gH0ZKqU-TO8YoERXs"
+    apiKey: "AIzaSyCv72WatXjsM_AKL3gH0ZKqU-TO8YoERXs",
+    firebaseUrlAuth: "https://identitytoolkit.googleapis.com/v1"
   }
   //router : {
   //  middleware : 'firstMiddleware',
