@@ -2,7 +2,7 @@
     <div class="admin-auth-page">
         <p class="mt-64 text-3xl">{{ isLogin ? 'Login' : 'Registrati' }}</h1>
         <div class="bg-white shadow-md rounded px-8 pt-20 pb-8 mb-4 mt-1">
-            <form class="w-64 inline-block">
+            <div class="w-64 inline-block">
                 
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
@@ -26,7 +26,7 @@
                 <button @click="invia" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     {{ isLogin ? 'Login' : 'Registrati' }}
                 </button>
-            </form>
+            </div>
             <br><br><br>
             <button @click="changeLogin">Switch to {{ isLogin ? 'Registrati' : 'Login' }}</button>
             {{ user }}
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 
 export default {
   name: 'AdminAuthPage',
@@ -55,7 +56,19 @@ export default {
           this.isLogin = !this.isLogin;
       },
       invia(){
-          console.log(this.user);
+        console.log(this.user);
+        const body = {
+              email : this.user.email,
+              password : this.user.password,
+              returnSecureToken : true
+        }
+        axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' + process.env.apiKey,body)
+        .then(result => {
+                console.log(result);
+        })
+        .catch( error => {
+                console.log(error);
+        });
       }
   }
 }

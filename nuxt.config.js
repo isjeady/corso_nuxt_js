@@ -52,6 +52,9 @@ export default {
     extend (config, ctx) {
     }
   },
+  env : {
+    apiKey: "AIzaSyCv72WatXjsM_AKL3gH0ZKqU-TO8YoERXs"
+  }
   //router : {
   //  middleware : 'firstMiddleware',
   //}
