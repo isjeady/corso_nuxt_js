@@ -45,9 +45,7 @@ export default {
           });
   },
   computed: {
-    currentPost(){
-      return this.$store.getters.getPost;
-    }
+	  
   }
 }
 </script>

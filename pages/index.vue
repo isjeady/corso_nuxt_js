@@ -9,6 +9,7 @@
 import PostList from '~/components/Post/PostList.vue'
 
 export default {
+  //middleware : 'firstMiddleware',
   components: {
     PostList
   }

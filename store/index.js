@@ -29,7 +29,7 @@ const createStore = () => {
               postsArray.push({...res.data[key], id: key})
             }
             vueContext.commit('setPosts',postsArray);
-            console.log(res.data);
+            //console.log(res.data);
           })
           .catch(error => {
             console.log(error);

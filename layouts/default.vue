@@ -18,6 +18,7 @@ import Sidenav  from '~/components/Navigator/Sidenav.vue'
 import Header  from '~/components/Navigator/Header.vue'
 
 export default {
+  //middleware : 'firstMiddleware',
   components: {
     Sidenav,
     Header
