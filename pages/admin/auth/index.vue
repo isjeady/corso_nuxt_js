@@ -83,6 +83,9 @@ export default {
 
             this.$store.commit('setToken',token);
 
+            this.$cookies.set("token",token);
+            this.$cookies.set("tokenExpiresIn",tokenExpiresIn);
+
             localStorage.setItem("token",token);
             localStorage.setItem("tokenExpiresIn",tokenExpiresIn);
 

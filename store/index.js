@@ -64,18 +64,6 @@ const createStore = () => {
       },
       setPosts(context,posts){
         context.commit('setPosts',posts);
-      },
-      verifyAuth(vueContext){
-        
-        const token = localStorage.getItem("token");
-        const tokenExpiresIn = localStorage.getItem("tokenExpiresIn");
-
-        if(new Date().getTime() > +tokenExpiresIn || !token){
-          //TODO: Logout
-          return;
-        }
-
-        vueContext.commit("setToken",token);
       }
     },
     getters : {
