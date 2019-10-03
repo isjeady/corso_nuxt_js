@@ -75,8 +75,10 @@ export default {
 
         axios.post(urlServer,body)
         .then(result => {
-            console.log(result.data.idToken);
+            console.log(result.data);
+            //result.data.expiresIn * 
             this.$store.commit('setToken',result.data.idToken);
+            this.$store.dispatch('setLogoutTimer',result.data.expiresIn * 1000);
             this.$router.push('/admin')
         })
         .catch( e => {

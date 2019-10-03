@@ -1,5 +1,5 @@
 import Vuex from 'vuex';
-import axios from 'axios'
+import axios from 'axios'// Vue router instance
 
 const createStore = () => {
   return new Vuex.Store({
@@ -20,6 +20,9 @@ const createStore = () => {
       },
       setToken(state,token){
         state.token = token;
+      },
+      clearToken(state){
+        state.token = null;
       }
     },
     actions: {
@@ -61,6 +64,11 @@ const createStore = () => {
       },
       setPosts(context,posts){
         context.commit('setPosts',posts);
+      },
+      setLogoutTimer(vueContext, duration){
+        setTimeout(() => {
+          vueContext.commit('clearToken');
+        },duration);
       }
     },
     getters : {
