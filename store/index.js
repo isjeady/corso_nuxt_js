@@ -40,7 +40,7 @@ const createStore = () => {
           });
       },
       addPost(context,newPost){
-        return axios.post('https://nuxt-corso-isjeady.firebaseio.com/posts.json',newPost)
+        return axios.post('https://nuxt-corso-isjeady.firebaseio.com/posts.json?auth=' + context.state.token,newPost)
           .then(result => {
             console.log(result.data.name);
             context.commit('newPost',{ ...newPost, id : result.data.name });
@@ -50,7 +50,7 @@ const createStore = () => {
           });
       },
       editPost(context,editPost){
-        return axios.put(`https://nuxt-corso-isjeady.firebaseio.com/posts/${editPost.id}.json`,editPost)
+        return axios.put(`https://nuxt-corso-isjeady.firebaseio.com/posts/${editPost.id}.json?auth=${context.state.token}`,editPost)
           .then(result => {
             console.log(result.data.name);
             context.commit('editPost',editPost);
