@@ -1,7 +1,17 @@
 <template>
   <div>
     <div class="container px-4 md:px-0 max-w-6xl mx-auto">
-      <nuxt />
+    <button @click="admin" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 mt-3 mb-3 px-4 rounded">
+        Admin
+    </button>
+    <button @click="newPostPage" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Nuovo Post
+    </button>
+    <button @click="logout" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Logout
+    </button>
+    <hr>
+    <nuxt />
     </div>
   </div>
 </template>
@@ -20,7 +30,18 @@ export default {
     return {
       sidenav : false
     }
-  }
+  },
+  methods : {
+    admin(){
+      this.$router.push('/admin');
+    },
+    newPostPage(){
+      this.$router.push('/admin/post/new');
+    },
+    logout(){
+      this.$router.push('/admin/auth/logout');
+    }
+  },
 }
 </script>
 

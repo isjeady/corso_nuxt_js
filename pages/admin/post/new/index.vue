@@ -16,6 +16,7 @@ import axios from 'axios'
 import PostForm from '~/components/Admin/PostForm.vue'
 
 export default {
+  middleware: ['auth'],
   components: {
     PostForm
   },
@@ -41,7 +42,6 @@ export default {
       this.$router.push('/admin');
     }
   },
-    layout : 'admin',
-      middleware: ['auth']
+  layout : 'admin'
 }
 </script>

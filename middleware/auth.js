@@ -1,37 +1,30 @@
 export default function ({ app,store,redirect,req }){
-    console.log('isAuth : ' + store.getters.isAuth)
 
-    if(process.client){
-        /*
-        app.$cookies.set('cookie-name', 'cookie-value', {
-            path: '/',
-            maxAge: 60 * 60 * 24 * 7
-        })
-
-        const cookieRes = app.$cookies.get('cookie-name')
-        */
+        console.log('isAuth : ' + store.getters.isAuth)
+        
+        let token,tokenExpiresIn;
         if(req){
             if(!req.headers.cookie){
-                return;
+                redirect('/admin/auth/logout')
             }
-            const token = app.$cookies.get('token')
-            const expiresIn = app.$cookies.get('tokenExpiresIn')
-            if(!token || !expiresIn)
-                return;
+            token = app.$cookies.get('token')
+            tokenExpiresIn = app.$cookies.get('tokenExpiresIn')
+        }else{
+            token = localStorage.getItem("token");
+            tokenExpiresIn = localStorage.getItem("tokenExpiresIn");
         }
 
-        const token = localStorage.getItem("token");
-        const tokenExpiresIn = localStorage.getItem("tokenExpiresIn");
-
+        //check valid expire e token
         if(new Date().getTime() > +tokenExpiresIn || !token){
-          //TODO: Logout
-          return;
+            redirect('/admin/auth/logout')
+        }else{
+            store.commit("setToken",token);
         }
 
-        store.commit("setToken",token);
-    }
+        console.log('token : ' + token)
 
-    if(!store.getters.isAuth){
-        redirect('/admin/auth')
-    }
+        if(!store.getters.isAuth){
+            redirect('/admin/auth')
+        }
+
 }
