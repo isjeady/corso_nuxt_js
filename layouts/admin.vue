@@ -1,16 +1,18 @@
 <template>
   <div>
     <div class="container px-4 md:px-0 max-w-6xl mx-auto">
-    <button @click="admin" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 mt-3 mb-3 px-4 rounded">
-        Admin
-    </button>
-    <button @click="newPostPage" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Nuovo Post
-    </button>
-    <button @click="logout" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Logout
-    </button>
-    <hr>
+    <div v-if="isAuth">
+      <button @click="admin" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 mt-3 mb-3 px-4 rounded">
+          Admin
+      </button>
+      <button @click="newPostPage" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Nuovo Post
+      </button>
+      <button @click="logout" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Logout
+      </button>
+      <hr>
+    </div>
     <nuxt />
     </div>
   </div>
@@ -29,6 +31,11 @@ export default {
   data(){
     return {
       sidenav : false
+    }
+  },
+  computed : {
+    isAuth(){
+      return this.$store.getters.isAuth
     }
   },
   methods : {

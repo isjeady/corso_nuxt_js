@@ -1,7 +1,6 @@
 <template>
     <div class="admin-auth-page">
         <p class="mt-64 text-3xl">{{ isLogin ? 'Login' : 'Registrati' }}</p>
-        <p class="text-3xl">{{ $store.state.token }}</p>
         <p class="text-2xl red">{{ error }}</p>
         <div class="bg-white shadow-md rounded px-8 pt-20 pb-8 mb-4 mt-1">
             <div class="w-64 inline-block">
@@ -25,13 +24,14 @@
                 </div>
 
 
-                <button @click="invia" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <button v-if="!loading" @click="invia" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     {{ isLogin ? 'Login' : 'Registrati' }}
                 </button>
+                <button v-else class="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed">Loading...</button>
+              
             </div>
             <br><br><br>
             <button @click="changeLogin">Switch to {{ isLogin ? 'Registrati' : 'Login' }}</button>
-            {{ user }}
         </div>
     </div>
 </template>
@@ -47,6 +47,7 @@ export default {
   data() {
     return {
       isLogin: true,
+      loading: false,
       error: '',
       user : {
           email : '',
@@ -59,6 +60,7 @@ export default {
           this.isLogin = !this.isLogin;
       },
       invia(){
+        this.loading = true;
         var urlServer = process.env.firebaseUrlAuth;
         if(this.isLogin){
             urlServer = urlServer + '/accounts:signInWithPassword?key=' + process.env.apiKey,body;
@@ -88,10 +90,11 @@ export default {
 
             localStorage.setItem("token",token);
             localStorage.setItem("tokenExpiresIn",tokenExpiresIn);
-
+            this.loading = false;
             this.$router.push('/admin');
         })
         .catch( e => {
+            this.loading = false;
             this.error = e.response.data.error.errors[0].message;
         });
 
