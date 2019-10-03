@@ -4,7 +4,8 @@ import axios from 'axios'
 const createStore = () => {
   return new Vuex.Store({
     state: {
-      posts :  []
+      posts :  [],
+      token : null
     },
     mutations: {
       setPosts(state,posts){
@@ -16,12 +17,15 @@ const createStore = () => {
       editPost(state,editPost){
         const index = state.posts.findIndex(post => post.id == editPost.id);
         state.posts[index] = editPost;
+      },
+      setToken(state,token){
+        state.token = token;
       }
     },
     actions: {
       nuxtServerInit(vueContext,context){
         console.log("nuxtServerInit");
-        
+
         return axios.get('https://nuxt-corso-isjeady.firebaseio.com/posts.json')
           .then(res => {
             const postsArray = [];
