@@ -77,12 +77,18 @@ export default {
         .then(result => {
             console.log(result.data);
             //result.data.expiresIn * 
-            this.$store.commit('setToken',result.data.idToken);
-            this.$store.dispatch('setLogoutTimer',result.data.expiresIn * 1000);
-            this.$router.push('/admin')
+            const token = result.data.idToken;
+            const expiresIn = result.data.expiresIn;
+            const tokenExpiresIn = new Date().getTime() + Number.parseInt(expiresIn) * 1000;
+
+            this.$store.commit('setToken',token);
+
+            localStorage.setItem("token",token);
+            localStorage.setItem("tokenExpiresIn",tokenExpiresIn);
+
+            this.$router.push('/admin');
         })
         .catch( e => {
-            console.log(e.response.data.error.errors[0].message);
             this.error = e.response.data.error.errors[0].message;
         });
 
