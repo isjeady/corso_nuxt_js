@@ -70,6 +70,9 @@ const createStore = () => {
       getPost : (state) => (postId) =>{
         const p = state.posts.find(post => post.id == postId);
         return p ? p : null;
+      },
+      isAuth(state){
+        return state.token != null
       }
     }
   })

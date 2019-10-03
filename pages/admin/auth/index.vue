@@ -77,6 +77,7 @@ export default {
         .then(result => {
             console.log(result.data.idToken);
             this.$store.commit('setToken',result.data.idToken);
+            this.$router.push('/admin')
         })
         .catch( e => {
             console.log(e.response.data.error.errors[0].message);

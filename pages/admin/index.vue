@@ -30,6 +30,7 @@ export default {
       this.$router.push('/admin/post/new');
     }
   },
-  layout : 'admin'
+  layout : 'admin',
+  middleware: ['auth']
 }
 </script>

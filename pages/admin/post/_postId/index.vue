@@ -66,6 +66,7 @@ export default {
       this.$router.push('/admin');
     }
   },
-    layout : 'admin'
+    layout : 'admin',
+      middleware: ['auth']
 }
 </script>
