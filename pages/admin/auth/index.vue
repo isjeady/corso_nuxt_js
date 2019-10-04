@@ -28,7 +28,7 @@
                     {{ isLogin ? 'Login' : 'Registrati' }}
                 </button>
                 <button v-else class="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed">Loading...</button>
-              
+
             </div>
             <br><br><br>
             <button @click="changeLogin">Switch to {{ isLogin ? 'Registrati' : 'Login' }}</button>
@@ -38,6 +38,7 @@
 
 <script>
 import axios from 'axios'
+import config from '@/config';
 
 export default {
   name: 'AdminAuthPage',
@@ -61,11 +62,11 @@ export default {
       },
       invia(){
         this.loading = true;
-        var urlServer = process.env.firebaseUrlAuth;
+        var urlServer = config.firebase.urlAuth;
         if(this.isLogin){
-            urlServer = urlServer + '/accounts:signInWithPassword?key=' + process.env.apiKey,body;
+            urlServer = urlServer + '/accounts:signInWithPassword?key=' + config.firebase.apiKey,body;
         }else{
-            urlServer = urlServer + '/accounts:signUp?key=' + process.env.apiKey,body;
+            urlServer = urlServer + '/accounts:signUp?key=' + config.firebase.apiKey,body;
         }
 
         console.log(this.user);
@@ -78,7 +79,7 @@ export default {
         axios.post(urlServer,body)
         .then(result => {
             console.log(result.data);
-            //result.data.expiresIn * 
+            //result.data.expiresIn *
             const token = result.data.idToken;
             const expiresIn = result.data.expiresIn;
             const tokenExpiresIn = new Date().getTime() + Number.parseInt(expiresIn) * 1000;
