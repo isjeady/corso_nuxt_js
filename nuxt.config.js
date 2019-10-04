@@ -1,3 +1,4 @@
+const env = require('dotenv').config();
 
 export default {
   mode: 'universal',
@@ -53,10 +54,7 @@ export default {
     extend (config, ctx) {
     }
   },
-  env : {
-    apiKey: "AIzaSyCv72WatXjsM_AKL3gH0ZKqU-TO8YoERXs",
-    firebaseUrlAuth: "https://identitytoolkit.googleapis.com/v1"
-  }
+  env : env.parsed
   //router : {
   //  middleware : 'firstMiddleware',
   //}
