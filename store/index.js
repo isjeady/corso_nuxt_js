@@ -1,5 +1,7 @@
 import Vuex from 'vuex';
-import axios from 'axios'// Vue router instance
+import axios from 'axios'
+import config from '@/config';
+
 
 const createStore = () => {
   return new Vuex.Store({
@@ -29,7 +31,7 @@ const createStore = () => {
       nuxtServerInit(vueContext,context){
         console.log("nuxtServerInit");
 
-        return axios.get('https://nuxt-corso-isjeady.firebaseio.com/posts.json')
+        return axios.get(config.databaseUrl + '/posts.json')
           .then(res => {
             const postsArray = [];
             for (const key in res.data){
@@ -43,7 +45,7 @@ const createStore = () => {
           });
       },
       addPost(context,newPost){
-        return axios.post('https://nuxt-corso-isjeady.firebaseio.com/posts.json?auth=' + context.state.token,newPost)
+        return axios.post(config.databaseUrl + '/posts.json?auth=' + context.state.token,newPost)
           .then(result => {
             console.log(result.data.name);
             context.commit('newPost',{ ...newPost, id : result.data.name });
@@ -53,7 +55,7 @@ const createStore = () => {
           });
       },
       editPost(context,editPost){
-        return axios.put(`https://nuxt-corso-isjeady.firebaseio.com/posts/${editPost.id}.json?auth=${context.state.token}`,editPost)
+        return axios.put(`${config.databaseUrl}/posts/${editPost.id}.json?auth=${context.state.token}`,editPost)
           .then(result => {
             console.log(result.data.name);
             context.commit('editPost',editPost);

@@ -30,11 +30,12 @@
 <script>
 import PostList from '~/components/Post/PostList.vue'
 import axios from 'axios'
+import config from '@/config';
 
 export default {
   asyncData(context){
 	console.log('asyncData');
-	return axios.get(`https://nuxt-corso-isjeady.firebaseio.com/posts/${context.params.id}.json`)
+	return axios.get(`${config.databaseUrl}/posts/${context.params.id}.json`)
           .then(res => {
 			  return {
 					currentPost : res.data
