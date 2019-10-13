@@ -6,15 +6,10 @@
 </template>
 
 <script>
-import PostList from '~/components/Post/PostList.vue'
 
 export default {
-  //middleware : 'firstMiddleware',
   mounted(){
     console.log(process.env.BASE_URL);
-  },
-  components: {
-    PostList
   }
 }
 </script>

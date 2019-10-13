@@ -28,7 +28,6 @@
 
 
 <script>
-import PostList from '~/components/Post/PostList.vue'
 import axios from 'axios'
 import config from '@/config';
 

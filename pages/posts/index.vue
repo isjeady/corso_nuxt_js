@@ -7,12 +7,7 @@
 
 
 <script>
-import PostList from '~/components/Post/PostList.vue'
-
 export default {
-  components: {
-    PostList
-  },
   data(){
     return {
 

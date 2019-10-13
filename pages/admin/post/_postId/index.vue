@@ -12,13 +12,9 @@
 
 
 <script>
-import PostForm from '~/components/Admin/PostForm.vue'
 import axios from 'axios'
 
 export default {
-  components: {
-    PostForm
-  },
   /*
   asyncData(context){
   console.log('asyncData');
