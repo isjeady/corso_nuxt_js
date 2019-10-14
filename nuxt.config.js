@@ -48,8 +48,13 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    'cookie-universal-nuxt'
+    'cookie-universal-nuxt',
+    '@nuxtjs/axios',
   ],
+
+  axios: {
+    // proxyHeaders: false
+  },
   /*
   ** Build configuration
   */

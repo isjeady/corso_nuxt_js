@@ -37,7 +37,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import config from '@/config';
 
 export default {
@@ -76,7 +75,7 @@ export default {
                   returnSecureToken : true
         }
 
-        axios.post(urlServer,body)
+        this.$axios.post(urlServer,body)
         .then(result => {
             console.log(result.data);
             //result.data.expiresIn *
