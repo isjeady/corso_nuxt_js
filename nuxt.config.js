@@ -1,72 +1,37 @@
-const env = require('dotenv').config();
-
-export default {
-  mode: 'universal',
-  /*
-  ** Headers of the page
-  */
+//import axios from 'axios'
+module.exports = {
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Nuxt.js',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', content: 'Nuxt.js.' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap' }
+      { rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }
     ]
   },
-  /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
-  /*
-  ** Global CSS
-  */
+  router: {
+    //linkActiveClass: 'selected'
+  },
   css: [
-    '~assets/css/main.css'
+    // Load a Node.js module directly (here it's a Sass file)
+    'bulma',
+    // CSS file in the project
+    '@/assets/css/loader.css',
+    // SCSS file in the project
+    //'@/assets/css/main.scss'
   ],
-  /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
-    '~plugins/components.js'
-  ],
-  transition: {
-    name: 'fade',
-    mode: 'out-in'
-  },
-  /*
-  ** Nuxt.js dev-modules
-  */
-  buildModules: [
-    // Doc: https://github.com/nuxt-community/nuxt-tailwindcss
-    '@nuxtjs/tailwindcss',
-  ],
-  /*
-  ** Nuxt.js modules
-  */
-  modules: [
-    'cookie-universal-nuxt',
-    '@nuxtjs/axios',
-  ],
-
-  axios: {
-    // proxyHeaders: false
-  },
-  /*
-  ** Build configuration
-  */
-  build: {
+  generate: {
     /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
+    routes: function () {
+      return axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then((res) => {
+        return res.data.map((post) => {
+          return '/post/' + post.id
+        })
+      })
     }
-  },
-  env : env.parsed
-  //router : {
-  //  middleware : 'firstMiddleware',
-  //}
+    */
+  }
 }
