@@ -1,4 +1,6 @@
+
 const env = require('dotenv').config();
+const axios = require('axios');
 
 export default {
   mode: 'universal',
@@ -14,7 +16,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto&display=swap' }
     ]
   },
   /*
@@ -27,15 +29,29 @@ export default {
   css: [
     '~assets/css/main.css'
   ],
+  transition : {
+    name: 'fade',
+    mode: 'out-in'
+  },
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
     '~plugins/components.js'
   ],
-  transition: {
-    name: 'fade',
-    mode: 'out-in'
+  generate : {
+    routes : function(){
+      return axios.get('https://nuxt-isjeady-corso.firebaseio.com/posts.json').then(res => {
+        const routes = [];
+        for(const key in res.data){
+          routes.push({
+            route: '/posts/' + key,
+            payload : {postData : res.data[key]}
+          })
+        }
+        return routes;
+      })
+    }
   },
   /*
   ** Nuxt.js dev-modules
@@ -49,24 +65,23 @@ export default {
   */
   modules: [
     'cookie-universal-nuxt',
-    '@nuxtjs/axios',
+    '@nuxtjs/axios'
   ],
-
-  axios: {
-    // proxyHeaders: false
+  router : {
+    middleware : 'firstMiddleware'
   },
   /*
   ** Build configuration
+   apiKey : "AIzaSyAgmBSrwmq4xj9VI64VkTF-z9EUaYPxRRY",
+    firebaseUrlAuth : "https://identitytoolkit.googleapis.com/v1"
   */
+  env : env.parsed,
   build: {
     /*
     ** You can extend webpack config here
     */
     extend (config, ctx) {
     }
-  },
-  env : env.parsed
-  //router : {
-  //  middleware : 'firstMiddleware',
-  //}
+  }
 }
+
