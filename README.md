@@ -1,7 +1,7 @@
 # Corso Nuxt Js
 
-![Corso Nuxt Js](https://dev.isjeady.com/courses/vue-js-application/img/featured.webp)
+![Corso Nuxt Js](https://dev.isjeady.com/courses/vuenuxt/img/featured.webp)
 
-[Il corso è disponibile quì](https://dev.isjeady.com/courses/nuxt-js/)
+[Il corso è disponibile quì](http://corsovuejs.com/)
 
 Repository Ufficiale del Corso Nuxt Js
